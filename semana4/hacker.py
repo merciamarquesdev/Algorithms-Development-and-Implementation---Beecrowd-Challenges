@@ -21,7 +21,7 @@ def multMod(a,b):
 def arranjo(n,k):
     result = 1
     for i in range(1,n+1):
-        result *= multMod(k,k)
+        result *= multMod(result,k)
     return result
     #if(n == var):
      #   return 1    
