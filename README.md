@@ -1,3 +1,12 @@
+# Algorithm Development and Implementation - Beecrowd Challenges
+
+I created this repository with two main objectives:
+
+Implementation of challenges from the Beecrowd platform, using algorithms and data structures, such as Recursion, Backtracking, Dynamic Programming, Number Theory, Combinatorics, and Geometry.
+Training for programming competitions.
+
+---------------------------------------------------------------------------------------------------
+
 # Desenvolvimento e Implementacao de Algoritmos
 
 Criei esse repositório com 2 principais objetivos: 
