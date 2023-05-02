@@ -1,4 +1,4 @@
-# Algorithm Development and Implementation - Beecrowd Challenges
+# Algorithms Development and Implementation - Beecrowd Challenges
 
 I created this repository with two main objectives:
 
