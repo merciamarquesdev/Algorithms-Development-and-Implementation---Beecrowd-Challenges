@@ -3,7 +3,7 @@ def somaMod(a,b):
     return (a+b)%num
 
 def T(i,j,m,n):
-    #total = T(i,d)
+    total = T(i,d)
     if (j == 1 and i >= m and i <= n):
         return 1
     elif (i < m or i > n):
