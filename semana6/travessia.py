@@ -5,7 +5,7 @@ def particao(n,k,tempos):
     melhoresTempos[0] = tempos[0]
     for i in range(1,n):
         maximo = tempos[i]
-        possibilidade = 10000
+        possibilidade = 1000000007
         for j in range(k):
             maximo = max(maximo,tempos[i-j])
             if (i >= k):        
