@@ -24,14 +24,14 @@ public class Main {
     public static char mochila(int c, int l, int[] p, int[] k) {
         k[0] = 0;
         for (int q = 1; q <= c; q++) {
-            for (int j = l - p[q] - 1; j >= 0; j--) {
+            for (int j = l - p[q]; j >= 0; j--) {
                 if (k[j] >= 0 && k[j + p[q]] == -1) {
                     k[j + p[q]] = q;
                 }
             }
         }
         int maximo = 0;
-        int i = k.length - 1;
+        int i = l;
         while (i > 0) {
             if (k[i] != -1) {
                 maximo += p[k[i]];
