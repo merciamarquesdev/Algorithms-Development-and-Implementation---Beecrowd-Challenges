@@ -1,57 +1,58 @@
-import math
+C = []
+P = []
 
-def ehPrimo(n, P, np):
-    for i in range(np): #1 a np+1
-        if(n%p[i] == 0):
-            if(n != P[i]):
+def geraCrivo(n,C):
+    C.append(0)
+    for i in range(1,n+1):
+        C.append(i)
+    t = 2
+    for i in range(1,int(n/2)+1):
+        C[t] = 2
+        t += 2
+    for i in range(3,int(abs((n)**(1/2)))+1):
+        if(C[i] == i):
+            t = i*i
+            d = i+i
+            while(t <= n):
+                if(C[t] == t):
+                    C[t] = i
+                t += d
+    return C 
+
+def geraPrimos(n,crivo,P,np):
+    for i in range(2,n+1):
+        if(crivo[i] == i):
+            np += 1
+            P.insert(np,i)
+    return P
+
+def ehPrimo(n,tabelaPrimos,np):
+    for i in range(0,np):
+        if(n%tabelaPrimos[i] == 0):
+            if(n != tabelaPrimos[i]):
                 return False
             else:
                 return True
     return True
 
-def fatora(n,P,np,F,nf):
-    nf = 0
-    for i in range(np): #1 a np+1
-        while(n%p[i] == 0):
-            nf += 1
-            F[nf] = P[i]
-            n = n/P[i]
-        if(n == 1 or P[i] >= [math.sqrt(n)]):
-            break
-    if(n != 1):
-        nf += 1
-        F[nf] = n
-    return F
+def ehComposto(primo):
+     if(primo):
+         return 'N'
+     else:
+         return 'S'
 
-def divisores(n,F,nf,D,nd):
-    F[0],nd,D[1] = 1,1,1
-    for i in range(1,nf+1):
-        if(F[i] == F[i-1]):
-            k *= F[i]
-        else:
-            k = F[i]
-            nda = nd
-        for j in range(1,nda+1): 
-            nd += 1
-            D[nd] = k*D[j]
-    return D
-
-
-def ehComposto(n,primo,fatorado):
-    comp = True
-    if(n):
-        return 'S'
-    else:
-        return 'N'
-
-def numeroComposto():
+def numeroComposto(C,P):
+    n = 10**7
+    np = 0
+    crivo = geraCrivo(n,C)
+    tabelaPrimos = geraPrimos(n,crivo,P,np)
+    np = len(tabelaPrimos)
     nCasos = int(input())
     while(nCasos > 0):
         n = int(input())
-        primo = ehPrimo(n,P,np)
-        fatorado = fatora(n,P,np,F,nf)
-        resultado = ehComposto(n,primo,fatorado)
+        primo = ehPrimo(n,tabelaPrimos,np)
+        resultado = ehComposto(primo)
         print(resultado)
         nCasos -= 1
 
-numeroComposto()
+numeroComposto(C,P)
