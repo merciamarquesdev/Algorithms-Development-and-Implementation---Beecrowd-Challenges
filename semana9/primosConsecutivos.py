@@ -1,6 +1,5 @@
 C = []
 P = []
-F = []
 
 def geraCrivo(n,C):
     C.append(0)
@@ -19,16 +18,6 @@ def geraCrivo(n,C):
                     C[t] = i
                 t += d
     return C 
-
-def fatora(n,C,F,nf):
-    if(n == 1):
-        return [0]
-    else:
-        while(n != 1):
-            F.insert(nf,C[n])
-            nf += 1
-            n = int(n/C[n])
-        return F
     
 def geraPrimos(n,crivo,P,np):
     for i in range(2,n+1):
@@ -37,24 +26,15 @@ def geraPrimos(n,crivo,P,np):
             P.insert(np,i)
     return P
 
-def ehPrimo(n,tabelaPrimos,np):
-    for i in range(0,np):
-        if(n%tabelaPrimos[i] == 0):
-            if(n != tabelaPrimos[i]):
-                return False
-            else:
-                return True
-    return True
+def ganhador(n,tabelaPrimos,np):
+    if(sum(tabelaPrimos) == n):
+        if(np % 2 != 0):
+            return 'Joana'
+        else:
+            return 'Bruno'
 
-def ehComposto(primo):
-     if(primo):
-         return 'N'
-     else:
-         return 'S'
-
-def fracoesIrredutiveis(C,P,F):
+def fracoesIrredutiveis(C,P):
     n = 10**7
-    nf = 0
     np = 0
     crivo = geraCrivo(n,C)
     tabelaPrimos = geraPrimos(n,crivo,P,np)
@@ -62,9 +42,7 @@ def fracoesIrredutiveis(C,P,F):
     nCasos = int(input())
     while(nCasos > 0):
         n = int(input())
-        fatores = fatora(n,crivo,F,nf)
-        primo = ehPrimo(n,tabelaPrimos,np)
-        resultado = ehComposto(primo)
+        resultado = ganhador(n,tabelaPrimos,np)
         print(resultado)
         nCasos -= 1
 
