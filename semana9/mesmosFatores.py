@@ -19,15 +19,15 @@ def geraCrivo(n,C):
                 t += d
     return C 
 
-def fatora(n,C,F,nf):
+def fatora(n,crivo,F,nf):
     if(n == 1):
-        return [0]
+        F = [0]
     else:
         while(n != 1):
-            F.insert(nf,C[n])
+            F.insert(nf,crivo[n])
             nf += 1
-            n = int(n/C[n])
-        return F
+            n = int(n/crivo[n])
+    return F
 
 def mesmosFatores(C,F):
     n = 10**7
