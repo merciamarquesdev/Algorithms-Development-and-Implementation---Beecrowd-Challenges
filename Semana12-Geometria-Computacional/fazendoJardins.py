@@ -2,13 +2,16 @@ import math
 
 def area(a,b,c):
     s = (a+b+c)/2
-    areaVioleta = math.sqrt(s*(s-a)*(s-b)*(s-c))
-    r = a/s
-    R = (a*b*c)/(4*A)
-    areaVermelha = math.pi*(r**2)
-    areaAmarela = math.pi*(r**2)
-    return areaAmarela,areaVioleta,areaVermelha
+    aux = (s*(s-a)*(s-b)*(s-c))
+    areaTriang = aux**(1/2)
+    r = aux/(s**2)
+    R = (a*b*c)**2/((4**2)*aux)
 
+    areaVermelha = math.pi*r
+    areaVioleta = areaTriang - areaVermelha
+    areaAmarela = (math.pi*R) - areaVioleta
+    
+    return areaAmarela,areaVioleta,areaVermelha
 
 def jardins():
     nCasos = int(input())
@@ -17,7 +20,8 @@ def jardins():
         a = int(entrada[0])
         b = int(entrada[1])
         c = int(entrada[2])
-
+        resultado = area(a,b,c)
+        print("%.2f %.2f %.2f" %(resultado))
         nCasos -= 1
 
 jardins()
