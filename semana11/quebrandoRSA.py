@@ -1,5 +1,6 @@
 C = []
 F = []
+P = []
 
 def geraCrivo(n,C):
     C.append(0)
@@ -19,14 +20,25 @@ def geraCrivo(n,C):
                 t += d
     return C 
 
-def fatora(n,crivo,F,nf):
-    if(n == 1):
-        F = [0]
-    else:
-        while(n != 1):
-            F.insert(nf,crivo[n])
+def geraPrimos(n,crivo,P,np):
+    for i in range(2,n+1):
+        if(crivo[i] == i):
+            np += 1
+            P.insert(np,i)
+    return P
+
+def fatora(n,P,np,F,nf):
+    nf = 0
+    for i in range(1,np):
+        while(n%P[i] == 0):
             nf += 1
-            n = int(n/crivo[n])
+            F[nf] = P[i]
+            n = n/P[i]
+        if(n == 1 or P[i] >= int(abs((n)**(1/2)))):
+            break
+    if(n != 1):
+        nf += 1
+        F[nf] = n
     return F
 
 def MDCE(a,b):
@@ -65,25 +77,29 @@ def exp(a,b,n):
         x = exp(a,b/2,n)
         return multMod(x,x,n)
 
-def quebrandoRSA(C,F):
+def quebrandoRSA(C,F,P):
+    crivoTamanho = int((10**8)**(1/2))
+    np = 0
+    crivo = geraCrivo(crivoTamanho,C)
+    primos = geraPrimos(crivoTamanho,crivo,P,np)
     nCasos = int(input())
-    nf = 0
     while(nCasos > 0):
         entrada = input().split(" ")
         e = int(entrada[0])
         n = int(entrada[1])
         cifrada = int(input())
-        crivo = geraCrivo(n,C)
-        fatores = fatora(n,crivo,F,nf)
-        print(fatores)
-        p = fatores[0]
-        q = fatores[1]
+        nf = 0
+        np = len(primos)
+        for i in range(0,3):
+            F.append(0)
+        fatores = fatora(n,P,np,F,nf)
+        p = int(fatores[1])
+        q = int(fatores[2])
         t = (p-1)*(q-1)
         d = invMod(e,t)
-        print(d)
         decifrada = exp(cifrada,d,n)
         print(decifrada)
 
         nCasos -= 1
 
-quebrandoRSA(C,F)
+quebrandoRSA(C,F,P)
