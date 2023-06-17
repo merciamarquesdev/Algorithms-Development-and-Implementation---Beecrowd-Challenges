@@ -1,11 +1,11 @@
 import math
 
 def area(a,b,c):
-    s = (a+b+c)/2
+    s = (a+b+c)/2.0
     aux = (s*(s-a)*(s-b)*(s-c))
-    areaTriang = aux**(1/2)
+    areaTriang = math.sqrt(aux)
     r = aux/(s**2)
-    R = (a*b*c)**2/((4**2)*aux)
+    R = ((a*b*c)**2)/(16*aux)
 
     areaVermelha = math.pi*r
     areaVioleta = areaTriang - areaVermelha
