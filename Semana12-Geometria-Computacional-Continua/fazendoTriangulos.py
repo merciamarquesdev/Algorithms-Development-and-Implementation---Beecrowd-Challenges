@@ -3,7 +3,6 @@ def somaPar(n):
     soma = []
     for i in range(1,k+1,2):
         soma.append(i)
-    print(soma)
     return sum(soma)
 
 def somaImpar(n):
@@ -11,7 +10,6 @@ def somaImpar(n):
     soma = []
     for i in range(2,(2*k)+1,2):
         soma.append(i)
-    print(soma)
     return sum(soma)
 
 def T(n):
