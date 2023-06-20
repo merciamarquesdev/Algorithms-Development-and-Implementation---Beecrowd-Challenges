@@ -1,3 +1,38 @@
+def somaPar(n):
+    k = int((n/2)-1)
+    soma = []
+    for i in range(1,k+1,2):
+        soma.append(i)
+    print(soma)
+    return sum(soma)
+
+def somaImpar(n):
+    k = int((n/2)-1)
+    soma = []
+    for i in range(2,(2*k)+1,2):
+        soma.append(i)
+    print(soma)
+    return sum(soma)
+
+def T(n):
+    if(n == 4):
+        return 1
+    elif (n%2 == 0): #se n for par
+        return T(n-1) + somaPar(n)
+    else: #se n for impar
+        return T(n-1) + somaImpar(n)
+
+def fazendoTriangulos():
+    casos = int(input())
+    while(casos > 0):
+        n = int(input())
+        resultado = T(n)
+        print(resultado)
+
+        casos -= 1
+
+fazendoTriangulos()
+
 #biblioteca em C++: include <bits/stdc++.h>
 
 # T[1,2,3,4] = 1 (2,3,4)
