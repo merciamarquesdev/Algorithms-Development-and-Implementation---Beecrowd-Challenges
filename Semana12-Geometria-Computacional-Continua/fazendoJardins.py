@@ -5,11 +5,11 @@ def area(a,b,c):
     aux = (s*(s-a)*(s-b)*(s-c))
     areaTriang = math.sqrt(aux)
     r = aux/(s**2)
-    R = ((a*b*c)**2)/(16*aux)
-
+    R = ((a*b*c)**2)/(16*(aux))
+    
     areaVermelha = math.pi*r
     areaVioleta = areaTriang - areaVermelha
-    areaAmarela = (math.pi*R) - areaVioleta
+    areaAmarela = (math.pi*R) - areaTriang
     
     return areaAmarela,areaVioleta,areaVermelha
 

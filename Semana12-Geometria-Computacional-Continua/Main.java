@@ -20,11 +20,13 @@ public class Main {
         return areaVioleta;
     }
 
-    public static double areaAmarela(int a, int b, int c,double areaVioleta) {
+    public static double areaAmarela(int a, int b, int c) {
         double s = (a+b+c)/2.0;
         double aux = (s*(s-a)*(s-b)*(s-c));
+        double areaTriang = Math.sqrt(aux);
         double R = Math.pow((a*b*c),2)/(aux*Math.pow(4,2));
-        double areaAmarela = (Math.PI*R) - areaVioleta;
+        
+        double areaAmarela = (Math.PI*R) - areaTriang;
 
         return areaAmarela;
     }
@@ -39,7 +41,7 @@ public class Main {
 
             double vermelha = areaVermelha(a, b, c);
             double violeta = areaVioleta(a, b, c, vermelha);
-            double amarela = areaAmarela(a, b, c, violeta);
+            double amarela = areaAmarela(a, b, c);
             
             System.out.printf("%.2f %.2f %.2f",amarela,violeta,vermelha); 
             nCasos -= 1;
